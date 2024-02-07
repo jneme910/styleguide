@@ -1,0 +1,248 @@
+/////////////////////////////////////////////////////////////
+// Styles for nrcs-design-system
+// MAIN SCSS ENTRY POINT
+/////////////////////////////////////////////////////////////
+
+// 'nrcs-style' custom Bootstrap Theme
+@import 'nrcs-style/nrcs-style';
+
+///////////////////////////
+// DOCS MISC
+
+// COLOR
+.docs-color-black {
+  background-color: $black;
+}
+.docs-color-active {
+  background-color: $selection-active-bg;
+}
+.docs-color-swatch {
+  min-height: 150px;
+}
+.docs-color-primaryoutline {
+  color: $primary;
+  border: 1px $primary solid;
+  background-color: $white;
+}
+.docs-color-primary-dark {
+  background-color: $primary-dark;
+}
+.docs-color-primary-darker {
+  background-color: $primary-darker;
+}
+.docs-color-secondary-dark {
+  background-color: $secondary-dark;
+}
+.docs-color-secondary-darker {
+  background-color: $secondary-darker;
+}
+.docs-gray-100 {
+  background-color: $gray-100;
+  border-top: 1px $gray-200 solid;
+  border-right: 1px $gray-200 solid;
+  border-left: 1px $gray-200 solid;
+}
+.docs-gray-200 {
+  background-color: $gray-200;
+}
+.docs-gray-300 {
+  background-color: $gray-300;
+}
+.docs-gray-400 {
+  background-color: $gray-400;
+}
+.docs-gray-500 {
+  background-color: $gray-500;
+}
+.docs-gray-600 {
+  background-color: $gray-600;
+}
+.docs-gray-700 {
+  background-color: $gray-700;
+}
+.docs-gray-800 {
+  background-color: $gray-800;
+}
+.docs-gray-900 {
+  background-color: $gray-900;
+}
+
+// Typography
+.docs-typeface p {
+  margin: 0;
+}
+.docs-text-big {
+  font-size: 5rem;
+}
+.docs-text-fallback {
+  font-family: 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+// temporary hack
+.badge + .badge {
+  margin-left: 0.5rem;
+}
+
+.nav-card a:not(:hover) {
+  text-decoration: none;
+}
+
+// Page Header
+// Specifics:
+.fpac-header {
+  background-color: $secondary;
+}
+.nrcs-header {
+  background-color: $primary;
+}
+.cd-header {
+  background-color: $primary;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  @include media-breakpoint-down(sm) {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .header-subtitle {
+    font-size: $h5-font-size;
+  }
+}
+.nrcs-header,
+.fpac-header {
+  .header-title {
+    padding-top: 5.5rem;
+    @include media-breakpoint-down(sm) {
+      padding-top: 3.5rem;
+    }
+  }
+
+  .header-subtitle {
+    font-size: $h4-font-size;
+    color: rgba(255, 255, 255, 0.5) !important; // 'text-white-50'
+  }
+}
+// All header types share this:
+.nrcs-header,
+.fpac-header,
+.cd-header {
+  color: $white;
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  .header-title {
+    font-weight: $font-weight-light;
+  }
+
+  .header-subtitle {
+    color: rgba(255, 255, 255, 0.5) !important; // 'text-white-50'
+  }
+}
+.requiredFields:after {
+  content: '*';
+  color: red;
+}
+// Page Footer
+.fpac-footer {
+  color: $white;
+  background-color: $gray-600;
+}
+.fpac-footer {
+  div[class^='col'],
+  div[class*=' col'] {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+.fpac-footer .nav-link,
+.fpac-footer a {
+  color: $white;
+  padding: 0.25rem 0.25rem 0.25rem 0;
+}
+.fpac-footer .nav-link:hover,
+.fpac-footer a:hover {
+  text-decoration: underline;
+}
+.fpac-footer-header,
+.fpac-footer-header-secondary {
+  margin-bottom: 0px;
+}
+.fpac-footer-secondary {
+  border-left: 1px solid rgba(255, 255, 255, 0.5); // 'text-white-50'
+
+  @include media-breakpoint-up(lg) {
+    padding-left: 3rem;
+  }
+  @include media-breakpoint-down(md) {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5); // 'text-white-50'
+    padding-top: 2rem;
+  }
+}
+
+// 508 Highlighting
+:focus,
+.focus {
+  outline: 3px auto $input-btn-focus-color;
+}
+#main-content:focus {
+  outline: 0;
+}
+// a:focus {
+//   outline-offset: 3px;
+// }
+
+////// UTILITIES
+
+// Used for when you have stacking elements which have overlapping borders/outlines
+// You can use this class to moementarily 'elevate' an element on focus to be sure the 508 outline shows
+.elevate-on-focus:focus {
+  z-index: 10;
+}
+
+// 508 disabled state styles
+
+.disabled {
+  pointer-events: none;
+
+  &.custom-checkbox {
+    .custom-control-input:indeterminate ~ .custom-control-label::before,
+    .custom-control-input:checked ~ .custom-control-label::before {
+      background-color: $fpac-blue;
+      opacity: 0.5;
+    }
+    .custom-control-label::before {
+      border-radius: 0.25rem;
+      background-color: $gray-200;
+    }
+  }
+
+  &.custom-select {
+    color: $gray-700;
+    background-color: $gray-100;
+  }
+
+  &.form-control {
+    background-color: $gray-200;
+    opacity: 1;
+  }
+
+  .custom-control-input ~ .custom-control-label::before {
+    background-color: $gray-200;
+  }
+
+  &.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: $fpac-blue;
+    opacity: 0.5;
+  }
+
+  .custom-select {
+    color: $gray-700;
+    background-color: $gray-200;
+  }
+}
